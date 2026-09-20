@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PageHeader from '../components/PageHeader';
 import EventCard from '../components/EventCard';
 import { EVENTS } from '../data/saitData';
-import { Calendar, Tag, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CATEGORIES = [
@@ -46,30 +46,30 @@ export default function Events() {
             <div
               className="card"
               style={{
-                borderLeft: '5px solid var(--accent)',
+                borderLeft: '5px solid var(--color-secondary)',
                 padding: '2.5rem',
-                backgroundColor: '#FFFFFF',
-                boxShadow: '0 4px 12px rgba(18, 48, 90, 0.04)'
+                backgroundColor: 'var(--color-surface)',
+                boxShadow: 'var(--shadow-md)'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                <span className="badge badge-accent">Featured Annual Flagship</span>
-                <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--secondary)' }}>
+                <span className="badge badge-primary">Featured Annual Flagship</span>
+                <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-secondary)' }}>
                   {featuredEvent.date}
                 </span>
               </div>
-              <h2 style={{ fontSize: '2rem', color: 'var(--primary-dark)', marginBottom: '0.85rem' }}>
+              <h2 style={{ fontSize: '2rem', color: 'var(--color-text)', marginBottom: '0.85rem' }}>
                 {featuredEvent.title}
               </h2>
-              <p style={{ color: 'var(--muted)', fontSize: '1.05rem', lineHeight: '1.6', maxWidth: '850px', marginBottom: '1.5rem' }}>
+              <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', lineHeight: '1.6', maxWidth: '850px', marginBottom: '1.5rem' }}>
                 {featuredEvent.description}
               </p>
-              <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', fontSize: '0.9rem', color: 'var(--text)', borderTop: '1px solid var(--border-light)', paddingTop: '1.25rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', fontSize: '0.9rem', color: 'var(--color-text)', borderTop: '1px solid var(--color-border)', paddingTop: '1.25rem', marginBottom: '1.5rem' }}>
                 <div><strong>Time:</strong> {featuredEvent.time}</div>
                 <div><strong>Venue:</strong> {featuredEvent.venue}</div>
                 <div><strong>Format:</strong> In-person / On-campus</div>
               </div>
-              <Link to="/activity-logger" className="btn btn-accent">
+              <Link to="/activity-logger" className="btn btn-primary">
                 <span>Participate & Log Attendance</span>
                 <ArrowRight size={15} />
               </Link>
@@ -99,19 +99,19 @@ export default function Events() {
 
           {/* Upcoming Event Cards Grid */}
           {upcomingEvents.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
+            <div key={selectedCategory} className="filter-cards-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
               {upcomingEvents.map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}
             </div>
           ) : (
-            <div className="card" style={{ padding: '3rem', textAlign: 'center', color: 'var(--muted)', marginBottom: '4rem' }}>
+            <div className="card" style={{ padding: '3rem', textAlign: 'center', color: 'var(--color-muted)', marginBottom: '4rem' }}>
               <p style={{ fontSize: '1rem' }}>No upcoming events currently scheduled under category "{selectedCategory}".</p>
             </div>
           )}
 
           {/* 3. PAST EVENTS SECTION */}
-          <div style={{ borderTop: '1px solid var(--border)', paddingTop: '3.5rem' }}>
+          <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '3.5rem' }}>
             <div style={{ marginBottom: '2rem' }}>
               <span className="section-eyebrow">Archive</span>
               <h2 className="section-title">Past Events & Sessions</h2>
@@ -119,13 +119,13 @@ export default function Events() {
             </div>
 
             {pastEvents.length > 0 ? (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+              <div key={`past-${selectedCategory}`} className="filter-cards-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
                 {pastEvents.map((event) => (
                   <EventCard key={event.id} event={event} />
                 ))}
               </div>
             ) : (
-              <div className="card" style={{ padding: '2.5rem', textAlign: 'center', color: 'var(--muted)' }}>
+              <div className="card" style={{ padding: '2.5rem', textAlign: 'center', color: 'var(--color-muted)' }}>
                 <p>No past events recorded under this filter.</p>
               </div>
             )}

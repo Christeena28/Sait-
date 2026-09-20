@@ -183,7 +183,7 @@ export default function ActivityLogger() {
       <section className="section">
         <div className="container">
           {/* Main Tabs */}
-          <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2.5rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2.5rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem' }}>
             <button
               type="button"
               className={`filter-btn ${activeTab === 'my-activities' ? 'active' : ''}`}
@@ -202,21 +202,21 @@ export default function ActivityLogger() {
 
           {/* TAB 1: MY ACTIVITIES (Form + History) */}
           {activeTab === 'my-activities' && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'flex-start' }}>
+            <div key="my-activities" className="tab-panel" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'flex-start' }}>
               
               {/* Submission Form */}
-              <div className="card" style={{ padding: '2rem', backgroundColor: '#FFFFFF' }}>
+              <div className="card" style={{ padding: '2rem', backgroundColor: 'var(--color-surface)' }}>
                 <div style={{ marginBottom: '1.5rem' }}>
-                  <h2 style={{ fontSize: '1.35rem', color: 'var(--primary-dark)', marginBottom: '0.35rem' }}>
+                  <h2 style={{ fontSize: '1.35rem', color: 'var(--color-primary-strong)', marginBottom: '0.35rem' }}>
                     Log New Activity
                   </h2>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>
+                  <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>
                     Stored locally in your browser and reviewed for departmental credits.
                   </p>
                 </div>
 
                 {formSubmittedMsg && (
-                  <div style={{ background: '#E6F4EA', color: '#1E7F4F', padding: '0.75rem 1rem', borderRadius: '4px', fontSize: '0.875rem', marginBottom: '1.25rem', border: '1px solid #c2e7cc', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <div className="toast-msg" style={{ background: 'var(--color-success-bg)', color: 'var(--color-success)', padding: '0.75rem 1rem', borderRadius: '4px', fontSize: '0.875rem', marginBottom: '1.25rem', border: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <CheckCircle size={16} />
                     <span>Activity logged successfully! Demo status initialized to "Submitted".</span>
                   </div>
@@ -325,10 +325,10 @@ export default function ActivityLogger() {
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                   <div>
-                    <h2 style={{ fontSize: '1.35rem', color: 'var(--primary-dark)', margin: 0 }}>
+                    <h2 style={{ fontSize: '1.35rem', color: 'var(--color-primary-strong)', margin: 0 }}>
                       Activity History ({activities.length})
                     </h2>
-                    <p style={{ color: 'var(--muted)', fontSize: '0.85rem', margin: 0 }}>
+                    <p style={{ color: 'var(--color-muted)', fontSize: '0.85rem', margin: 0 }}>
                       Review status workflow simulation.
                     </p>
                   </div>
@@ -341,9 +341,9 @@ export default function ActivityLogger() {
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
                             <span className="badge badge-primary">{act.type}</span>
-                            <span style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>Role: {act.role}</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--color-muted)' }}>Role: {act.role}</span>
                           </div>
-                          <h3 style={{ fontSize: '1.1rem', color: 'var(--primary-dark)', margin: 0 }}>
+                          <h3 style={{ fontSize: '1.1rem', color: 'var(--color-primary-strong)', margin: 0 }}>
                             {act.name}
                           </h3>
                         </div>
@@ -353,13 +353,13 @@ export default function ActivityLogger() {
                       </div>
 
                       {act.description && (
-                        <p style={{ color: 'var(--text)', fontSize: '0.875rem', lineHeight: '1.5', margin: '0.5rem 0' }}>
+                        <p style={{ color: 'var(--color-text)', fontSize: '0.875rem', lineHeight: '1.5', margin: '0.5rem 0' }}>
                           {act.description}
                         </p>
                       )}
 
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', borderTop: '1px solid var(--border-light)', paddingTop: '0.75rem', marginTop: '0.75rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: 'var(--muted)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', borderTop: '1px solid var(--color-border)', paddingTop: '0.75rem', marginTop: '0.75rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: 'var(--color-muted)' }}>
                           <Calendar size={13} />
                           <span>{act.date}</span>
                         </div>
@@ -370,7 +370,7 @@ export default function ActivityLogger() {
                               href={act.proofUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.8rem', color: 'var(--secondary)' }}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.8rem', color: 'var(--color-secondary)' }}
                             >
                               <span>Proof Link</span>
                               <ExternalLink size={12} />
@@ -400,15 +400,15 @@ export default function ActivityLogger() {
 
           {/* TAB 2: COMMUNITY FEED & LEADERBOARD */}
           {activeTab === 'community-feed' && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'flex-start' }}>
+            <div key="community-feed" className="tab-panel" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'flex-start' }}>
               
               {/* Community Feed */}
               <div>
                 <div style={{ marginBottom: '1.5rem' }}>
-                  <h2 style={{ fontSize: '1.35rem', color: 'var(--primary-dark)', marginBottom: '0.35rem' }}>
+                  <h2 style={{ fontSize: '1.35rem', color: 'var(--color-primary-strong)', marginBottom: '0.35rem' }}>
                     Verified Community Feed
                   </h2>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>
+                  <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>
                     Recent authenticated achievements and contributions across batches.
                   </p>
                 </div>
@@ -417,17 +417,17 @@ export default function ActivityLogger() {
                   {COMMUNITY_FEED.map((item, idx) => (
                     <div key={idx} className="card" style={{ padding: '1.25rem' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
-                        <span style={{ fontWeight: 600, fontSize: '0.925rem', color: 'var(--primary)' }}>
+                        <span style={{ fontWeight: 600, fontSize: '0.925rem', color: 'var(--color-primary)' }}>
                           {item.student}
                         </span>
-                        <span style={{ fontWeight: 700, color: 'var(--success)', fontSize: '0.85rem' }}>
+                        <span style={{ fontWeight: 700, color: 'var(--color-success)', fontSize: '0.85rem' }}>
                           {item.credits}
                         </span>
                       </div>
-                      <h4 style={{ fontSize: '1.05rem', color: 'var(--primary-dark)', marginBottom: '0.4rem' }}>
+                      <h4 style={{ fontSize: '1.05rem', color: 'var(--color-primary-strong)', marginBottom: '0.4rem' }}>
                         {item.activity}
                       </h4>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--muted)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--color-muted)' }}>
                         <span>Category: {item.type} · {item.date}</span>
                         <span className="badge badge-success">Verified</span>
                       </div>
@@ -437,14 +437,14 @@ export default function ActivityLogger() {
               </div>
 
               {/* Leaderboard */}
-              <div className="card" style={{ padding: '2rem', backgroundColor: '#FFFFFF' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--border)', paddingBottom: '1rem' }}>
+              <div className="card" style={{ padding: '2rem', backgroundColor: 'var(--color-surface)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem' }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <Trophy size={20} style={{ color: 'var(--accent)' }} />
-                      <h2 style={{ fontSize: '1.35rem', color: 'var(--primary-dark)', margin: 0 }}>Top Contributors</h2>
+                      <Trophy size={20} style={{ color: 'var(--color-primary)' }} />
+                      <h2 style={{ fontSize: '1.35rem', color: 'var(--color-primary-strong)', margin: 0 }}>Top Contributors</h2>
                     </div>
-                    <p style={{ color: 'var(--muted)', fontSize: '0.85rem', margin: '0.25rem 0 0' }}>Department Activity Ranking</p>
+                    <p style={{ color: 'var(--color-muted)', fontSize: '0.85rem', margin: '0.25rem 0 0' }}>Department Activity Ranking</p>
                   </div>
                   <span className="badge badge-sample">Demo Leaderboard</span>
                 </div>
@@ -459,24 +459,24 @@ export default function ActivityLogger() {
                         justifyContent: 'space-between',
                         padding: '0.85rem 1rem',
                         borderRadius: '6px',
-                        background: row.rank === 1 ? '#FFF8E7' : row.rank === 2 ? '#F2F6FA' : '#F7F6F2',
-                        border: row.rank === 1 ? '1px solid #F3DB9A' : '1px solid var(--border-light)'
+                        background: 'var(--color-surface-alt)',
+                        border: row.rank === 1 ? '1px solid var(--color-secondary)' : '1px solid var(--color-border)'
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <span style={{ fontWeight: 700, fontSize: '1.1rem', color: row.rank === 1 ? 'var(--accent)' : 'var(--muted)', width: '24px', textAlign: 'center' }}>
+                        <span style={{ fontWeight: 700, fontSize: '1.1rem', color: row.rank === 1 ? 'var(--color-primary-strong)' : 'var(--color-muted)', width: '24px', textAlign: 'center' }}>
                           #{row.rank}
                         </span>
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text)' }}>
+                          <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--color-text)' }}>
                             {row.name}
                           </div>
-                          <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
                             {row.year} · {row.verifiedCount} verified acts
                           </div>
                         </div>
                       </div>
-                      <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--primary)' }}>
+                      <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--color-primary)' }}>
                         {row.points} pts
                       </span>
                     </div>

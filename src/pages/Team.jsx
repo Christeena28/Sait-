@@ -38,7 +38,7 @@ export default function Team() {
           </div>
 
           {/* 2. SUB-TEAMS WITH FILTER BAR */}
-          <div style={{ borderTop: '1px solid var(--border)', paddingTop: '3.5rem' }}>
+          <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '3.5rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
               <div>
                 <span className="section-eyebrow">Department Sub-Committees</span>
@@ -61,7 +61,7 @@ export default function Team() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+            <div key={selectedFilter} className="filter-cards-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
               {filteredMembers.map((member, idx) => (
                 <PersonCard key={idx} person={member} isFaculty={false} />
               ))}

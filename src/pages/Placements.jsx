@@ -60,7 +60,7 @@ export default function Placements() {
         title="Placements & Industry Recruitment"
         description="Graduates of the Division of Information Technology at SOE CUSAT excel across software engineering, cloud architecture, and emerging deep-tech domains."
       >
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#F1F3F5', padding: '0.4rem 0.85rem', borderRadius: '4px', border: '1px dashed #ced4da', fontSize: '0.85rem', color: '#495057' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--color-surface-alt)', padding: '0.4rem 0.85rem', borderRadius: '4px', border: '1px dashed var(--color-border)', fontSize: '0.85rem', color: 'var(--color-muted)' }}>
           <span>Notice: Placement figures shown are <strong>Sample data</strong> for illustrative and demo purposes.</span>
         </div>
       </PageHeader>
@@ -76,7 +76,7 @@ export default function Placements() {
 
             {/* Batch Selector */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--muted)' }}>Select Batch:</span>
+              <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-muted)' }}>Select Batch:</span>
               <div style={{ display: 'flex', gap: '0.35rem' }}>
                 {['2025', '2024', '2023'].map((batch) => (
                   <button
@@ -93,13 +93,13 @@ export default function Placements() {
           </div>
 
           {/* 4 Clean Stat Blocks */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '3.5rem' }}>
+          <div key={`stats-${selectedBatch}`} className="filter-cards-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '3.5rem' }}>
             {currentBatchData.stats.map((stat, idx) => (
               <div key={idx} className="card" style={{ padding: '1.75rem', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'var(--heading)', fontSize: '2.4rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '0.35rem' }}>
+                <div style={{ fontFamily: 'var(--heading)', fontSize: '2.4rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>
                   {stat.value}
                 </div>
-                <div style={{ fontSize: '0.925rem', color: 'var(--muted)', fontWeight: 600, marginBottom: '0.5rem' }}>
+                <div style={{ fontSize: '0.925rem', color: 'var(--color-muted)', fontWeight: 600, marginBottom: '0.5rem' }}>
                   {stat.label}
                 </div>
                 <span className="badge badge-sample">Sample data</span>
@@ -108,13 +108,13 @@ export default function Placements() {
           </div>
 
           {/* 2. CSS-ONLY BAR CHART FOR SALARY DISTRIBUTION */}
-          <div className="card" style={{ padding: '2.5rem', marginBottom: '3.5rem', backgroundColor: '#FFFFFF' }}>
+          <div key={`chart-${selectedBatch}`} className="card filter-cards-fade" style={{ padding: '2.5rem', marginBottom: '3.5rem', backgroundColor: 'var(--color-surface)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.35rem', color: 'var(--primary-dark)', marginBottom: '0.35rem' }}>
+                <h3 style={{ fontSize: '1.35rem', color: 'var(--color-primary-strong)', marginBottom: '0.35rem' }}>
                   CTC Compensation Distribution (Batch of {selectedBatch})
                 </h3>
-                <p style={{ color: 'var(--muted)', fontSize: '0.9rem', margin: 0 }}>
+                <p style={{ color: 'var(--color-muted)', fontSize: '0.9rem', margin: 0 }}>
                   Pure CSS breakdown of offers grouped by compensation brackets.
                 </p>
               </div>
@@ -126,13 +126,13 @@ export default function Placements() {
                 <div key={idx}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem', fontSize: '0.9rem', fontWeight: 500 }}>
                     <span>{item.bracket}</span>
-                    <span style={{ fontWeight: 700, color: 'var(--primary)' }}>{item.percentage}% of offers</span>
+                    <span style={{ fontWeight: 700, color: 'var(--color-primary)' }}>{item.percentage}% of offers</span>
                   </div>
-                  <div style={{ width: '100%', height: '22px', backgroundColor: '#EEF1F6', borderRadius: '4px', overflow: 'hidden', display: 'flex' }}>
+                  <div style={{ width: '100%', height: '22px', backgroundColor: 'var(--color-surface-alt)', borderRadius: '4px', overflow: 'hidden', display: 'flex' }}>
                     <div
                       style={{
                         width: `${item.percentage}%`,
-                        backgroundColor: idx === 3 ? 'var(--accent)' : idx === 2 ? 'var(--secondary)' : 'var(--primary)',
+                        backgroundColor: idx === 3 ? 'var(--color-primary-strong)' : idx === 2 ? 'var(--color-primary)' : 'var(--color-secondary)',
                         borderRadius: '3px',
                         transition: 'width 0.3s ease'
                       }}
@@ -148,13 +148,13 @@ export default function Placements() {
           </div>
 
           {/* 3. RECRUITER CHIPS */}
-          <div className="card" style={{ padding: '2.5rem', marginBottom: '3.5rem', backgroundColor: '#FFFFFF' }}>
+          <div className="card" style={{ padding: '2.5rem', marginBottom: '3.5rem', backgroundColor: 'var(--color-surface)' }}>
             <div style={{ marginBottom: '1.5rem' }}>
               <span className="section-eyebrow">Recruiter Ecosystem</span>
-              <h3 style={{ fontSize: '1.35rem', color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>
+              <h3 style={{ fontSize: '1.35rem', color: 'var(--color-primary-strong)', marginBottom: '0.5rem' }}>
                 Companies Recruiting from Division of IT
               </h3>
-              <p style={{ color: 'var(--muted)', fontSize: '0.9rem', margin: 0 }}>
+              <p style={{ color: 'var(--color-muted)', fontSize: '0.9rem', margin: 0 }}>
                 Organizations actively participating in on-campus drives and alumni hiring partnerships.
               </p>
             </div>
@@ -164,13 +164,13 @@ export default function Placements() {
                 <span
                   key={idx}
                   style={{
-                    background: '#F7F6F2',
-                    border: '1px solid var(--border)',
+                    background: 'var(--color-surface-alt)',
+                    border: '1px solid var(--color-border)',
                     padding: '0.5rem 1rem',
                     borderRadius: '4px',
                     fontSize: '0.9rem',
                     fontWeight: 600,
-                    color: 'var(--primary-dark)'
+                    color: 'var(--color-primary-strong)'
                   }}
                 >
                   {company}
@@ -190,10 +190,10 @@ export default function Placements() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
               {PLACEMENT_STATS.resources.map((res, idx) => (
                 <div key={idx} className="card" style={{ padding: '1.75rem' }}>
-                  <h3 style={{ fontSize: '1.15rem', color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.15rem', color: 'var(--color-primary-strong)', marginBottom: '0.5rem' }}>
                     {res.title}
                   </h3>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
+                  <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
                     {res.desc}
                   </p>
                   {res.url.startsWith('http') ? (
@@ -207,7 +207,7 @@ export default function Placements() {
                       <ExternalLink size={14} />
                     </a>
                   ) : (
-                    <span className="btn btn-outline btn-sm" style={{ cursor: 'default', color: 'var(--muted)' }}>
+                    <span className="btn btn-outline btn-sm" style={{ cursor: 'default', color: 'var(--color-muted)' }}>
                       <span>Available on Department Hub</span>
                     </span>
                   )}

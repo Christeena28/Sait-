@@ -18,15 +18,15 @@ export default function Footer() {
                 style={{ height: '38px', width: 'auto' }}
                 onError={(e) => { e.target.style.display = 'none'; }}
               />
-              <span style={{ fontFamily: 'var(--heading)', fontSize: '1.25rem', fontWeight: 700, color: '#FFFFFF' }}>
+              <span style={{ fontFamily: 'var(--heading)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-surface)' }}>
                 SAIT CUSAT
               </span>
             </div>
-            <p style={{ color: '#A9B8CC', fontSize: '0.875rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
+            <p style={{ color: 'var(--color-on-dark-muted)', fontSize: '0.875rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
               Students Association of Information Technology (SAIT) is the student-run departmental body
               of the Division of Information Technology, School of Engineering, Cochin University of Science and Technology.
             </p>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#E0A526', fontSize: '0.8rem', fontWeight: 500 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-on-dark-muted)', fontSize: '0.8rem', fontWeight: 500 }}>
               <ShieldCheck size={16} />
               <span>Division of Information Technology · SOE CUSAT</span>
             </div>
@@ -95,7 +95,7 @@ export default function Footer() {
             <h4>Department Address</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.85rem', padding: 0, fontSize: '0.85rem' }}>
               <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start' }}>
-                <MapPin size={18} style={{ color: '#E0A526', flexShrink: 0, marginTop: '2px' }} />
+                <MapPin size={18} style={{ color: 'var(--color-on-dark-muted)', flexShrink: 0, marginTop: '2px' }} />
                 <span>
                   Division of Information Technology,<br />
                   School of Engineering, CUSAT,<br />
@@ -103,11 +103,11 @@ export default function Footer() {
                 </span>
               </li>
               <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'center' }}>
-                <Mail size={16} style={{ color: '#E0A526', flexShrink: 0 }} />
+                <Mail size={16} style={{ color: 'var(--color-on-dark-muted)', flexShrink: 0 }} />
                 <a href="mailto:principal_soe@cusat.ac.in">principal_soe@cusat.ac.in</a>
               </li>
               <li style={{ display: 'flex', gap: '0.65rem', alignItems: 'center' }}>
-                <Phone size={16} style={{ color: '#E0A526', flexShrink: 0 }} />
+                <Phone size={16} style={{ color: 'var(--color-on-dark-muted)', flexShrink: 0 }} />
                 <a href="tel:+914842556187">+91 484 255 6187</a>
               </li>
             </ul>

@@ -52,18 +52,18 @@ export default function FullPreview() {
   };
 
   return (
-    <div style={{ backgroundColor: '#ECEFE6', minHeight: '100vh', paddingBottom: '4rem' }}>
+    <div style={{ backgroundColor: 'var(--color-bg)', minHeight: '100vh', paddingBottom: '4rem' }}>
       {/* Floating Sticky Preview Control Header */}
       <div
         style={{
           position: 'sticky',
           top: 'var(--nav-height)',
           zIndex: 900,
-          backgroundColor: '#0B2140',
-          color: '#FFFFFF',
+          backgroundColor: 'var(--color-deep)',
+          color: 'var(--color-surface)',
           padding: '0.65rem 1rem',
-          borderBottom: '2px solid var(--accent)',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+          borderBottom: '2px solid var(--color-secondary)',
+          boxShadow: 'var(--shadow-md)',
         }}
       >
         <div
@@ -78,17 +78,17 @@ export default function FullPreview() {
         >
           {/* Mode & Jump Title */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <Layers size={18} style={{ color: 'var(--accent)' }} />
-            <span style={{ fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.02em' }}>
+            <Layers size={18} style={{ color: 'var(--color-on-dark)' }} />
+            <span style={{ fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.02em', fontFamily: 'var(--font-subheading)' }}>
               SINGLE PREVIEW SHOWCASE
             </span>
             <span
               style={{
                 fontSize: '0.75rem',
-                backgroundColor: 'rgba(255,255,255,0.15)',
+                backgroundColor: 'rgba(228, 220, 203, 0.15)',
                 padding: '0.15rem 0.5rem',
                 borderRadius: '4px',
-                color: '#E0A526',
+                color: 'var(--color-on-dark)',
               }}
             >
               All 9 Pages Stacked
@@ -113,8 +113,8 @@ export default function FullPreview() {
                 onClick={() => scrollToSection(sec.id)}
                 style={{
                   background: 'transparent',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#C3CFDE',
+                  border: '1px solid rgba(228, 220, 203, 0.2)',
+                  color: 'var(--color-on-dark-muted)',
                   padding: '0.25rem 0.55rem',
                   fontSize: '0.75rem',
                   borderRadius: '3px',
@@ -125,12 +125,12 @@ export default function FullPreview() {
                   gap: '0.3rem',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#FFFFFF';
-                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.borderColor = 'var(--color-on-dark)';
+                  e.currentTarget.style.color = 'var(--color-surface)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
-                  e.currentTarget.style.color = '#C3CFDE';
+                  e.currentTarget.style.borderColor = 'rgba(228, 220, 203, 0.2)';
+                  e.currentTarget.style.color = 'var(--color-on-dark-muted)';
                 }}
               >
                 <span>{sec.label}</span>
@@ -140,13 +140,13 @@ export default function FullPreview() {
 
           {/* Device Width Simulator */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <span style={{ fontSize: '0.75rem', color: '#A9B8CC' }}>Viewport:</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--color-on-dark-muted)' }}>Viewport:</span>
             <button
               type="button"
               onClick={() => setViewportWidth('100%')}
               style={{
-                background: viewportWidth === '100%' ? 'var(--accent)' : 'rgba(255,255,255,0.1)',
-                color: viewportWidth === '100%' ? '#0B2140' : '#FFFFFF',
+                background: viewportWidth === '100%' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
+                color: viewportWidth === '100%' ? 'var(--color-deep)' : 'var(--color-on-dark)',
                 border: 'none',
                 padding: '0.3rem 0.55rem',
                 borderRadius: '3px',
@@ -167,8 +167,8 @@ export default function FullPreview() {
               type="button"
               onClick={() => setViewportWidth('1200px')}
               style={{
-                background: viewportWidth === '1200px' ? 'var(--accent)' : 'rgba(255,255,255,0.1)',
-                color: viewportWidth === '1200px' ? '#0B2140' : '#FFFFFF',
+                background: viewportWidth === '1200px' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
+                color: viewportWidth === '1200px' ? 'var(--color-deep)' : 'var(--color-on-dark)',
                 border: 'none',
                 padding: '0.3rem 0.55rem',
                 borderRadius: '3px',
@@ -189,8 +189,8 @@ export default function FullPreview() {
               type="button"
               onClick={() => setViewportWidth('768px')}
               style={{
-                background: viewportWidth === '768px' ? 'var(--accent)' : 'rgba(255,255,255,0.1)',
-                color: viewportWidth === '768px' ? '#0B2140' : '#FFFFFF',
+                background: viewportWidth === '768px' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
+                color: viewportWidth === '768px' ? 'var(--color-deep)' : 'var(--color-on-dark)',
                 border: 'none',
                 padding: '0.3rem 0.55rem',
                 borderRadius: '3px',
@@ -211,8 +211,8 @@ export default function FullPreview() {
               type="button"
               onClick={() => setViewportWidth('375px')}
               style={{
-                background: viewportWidth === '375px' ? 'var(--accent)' : 'rgba(255,255,255,0.1)',
-                color: viewportWidth === '375px' ? '#0B2140' : '#FFFFFF',
+                background: viewportWidth === '375px' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
+                color: viewportWidth === '375px' ? 'var(--color-deep)' : 'var(--color-on-dark)',
                 border: 'none',
                 padding: '0.3rem 0.55rem',
                 borderRadius: '3px',
@@ -238,11 +238,11 @@ export default function FullPreview() {
           width: viewportWidth,
           maxWidth: '100%',
           margin: '2rem auto',
-          backgroundColor: '#FFFFFF',
+          backgroundColor: 'var(--color-surface)',
           borderRadius: viewportWidth !== '100%' ? '12px' : '0',
-          boxShadow: viewportWidth !== '100%' ? '0 12px 36px rgba(0,0,0,0.18)' : 'none',
+          boxShadow: viewportWidth !== '100%' ? '0 12px 36px rgba(6, 20, 27, 0.16)' : 'none',
           overflow: 'hidden',
-          border: viewportWidth !== '100%' ? '1px solid #C0C8D4' : 'none',
+          border: viewportWidth !== '100%' ? '1px solid var(--color-border)' : 'none',
           transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
@@ -254,15 +254,15 @@ export default function FullPreview() {
               key={sec.id}
               id={sec.id}
               style={{
-                borderBottom: idx !== SECTIONS.length - 1 ? '8px solid #E2E7EE' : 'none',
+                borderBottom: idx !== SECTIONS.length - 1 ? '8px solid var(--color-surface-alt)' : 'none',
                 position: 'relative',
               }}
             >
               {/* Distinct Section Identifier Header */}
               <div
                 style={{
-                  backgroundColor: '#12305A',
-                  color: '#FFFFFF',
+                  backgroundColor: 'var(--color-primary-strong)',
+                  color: 'var(--color-surface)',
                   padding: '0.65rem 1.5rem',
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -274,23 +274,24 @@ export default function FullPreview() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                   <span
                     style={{
-                      background: 'var(--accent)',
-                      color: '#0B2140',
+                      background: 'var(--color-secondary)',
+                      color: 'var(--color-surface)',
                       fontWeight: 800,
                       padding: '0.1rem 0.45rem',
                       borderRadius: '3px',
                       fontSize: '0.75rem',
+                      fontFamily: 'var(--font-subheading)',
                     }}
                   >
                     PAGE 0{idx + 1}
                   </span>
-                  <strong style={{ textTransform: 'uppercase' }}>{sec.label} PAGE</strong>
+                  <strong style={{ textTransform: 'uppercase', fontFamily: 'var(--font-subheading)' }}>{sec.label} PAGE</strong>
                 </div>
 
                 <Link
                   to={sec.id === 'sec-home' ? '/' : `/${sec.id.replace('sec-', '')}`}
                   style={{
-                    color: 'var(--accent)',
+                    color: 'var(--color-on-dark)',
                     fontSize: '0.75rem',
                     fontWeight: 600,
                     display: 'inline-flex',

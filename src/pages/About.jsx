@@ -10,7 +10,6 @@ import {
   Compass,
   CheckCircle,
   FileText,
-  Calendar,
   Layers,
   GraduationCap
 } from 'lucide-react';
@@ -51,34 +50,34 @@ export default function About() {
       <section className="section">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-            <div className="card" style={{ padding: '2rem', borderTop: '4px solid var(--primary)' }}>
+            <div className="card" style={{ padding: '2rem', borderTop: '4px solid var(--color-primary)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <Target size={24} style={{ color: 'var(--primary)' }} />
-                <h2 style={{ fontSize: '1.4rem', margin: 0, color: 'var(--primary-dark)' }}>Our Vision</h2>
+                <Target size={24} style={{ color: 'var(--color-primary)' }} />
+                <h2 style={{ fontSize: '1.4rem', margin: 0, color: 'var(--color-text)' }}>Our Vision</h2>
               </div>
-              <p style={{ color: 'var(--text)', lineHeight: '1.7', fontSize: '0.975rem' }}>
+              <p style={{ color: 'var(--color-text)', lineHeight: '1.7', fontSize: '0.975rem' }}>
                 To create a dynamic ecosystem where information technology undergraduates evolve into
                 technically astute engineers, visionary problem solvers, and ethical leaders capable of
                 addressing complex technological challenges facing society and global enterprise.
               </p>
             </div>
 
-            <div className="card" style={{ padding: '2rem', borderTop: '4px solid var(--secondary)' }}>
+            <div className="card" style={{ padding: '2rem', borderTop: '4px solid var(--color-secondary)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <Compass size={24} style={{ color: 'var(--secondary)' }} />
-                <h2 style={{ fontSize: '1.4rem', margin: 0, color: 'var(--primary-dark)' }}>Our Mission</h2>
+                <Compass size={24} style={{ color: 'var(--color-secondary)' }} />
+                <h2 style={{ fontSize: '1.4rem', margin: 0, color: 'var(--color-text)' }}>Our Mission</h2>
               </div>
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', color: 'var(--text)', fontSize: '0.95rem' }}>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', color: 'var(--color-text)', fontSize: '0.95rem' }}>
                 <li style={{ display: 'flex', gap: '0.6rem' }}>
-                  <CheckCircle size={18} style={{ color: 'var(--success)', flexShrink: 0, marginTop: '2px' }} />
+                  <CheckCircle size={18} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
                   <span>Deliver rigorous hands-on technical workshops spanning modern cloud architectures, data engineering, and artificial intelligence.</span>
                 </li>
                 <li style={{ display: 'flex', gap: '0.6rem' }}>
-                  <CheckCircle size={18} style={{ color: 'var(--success)', flexShrink: 0, marginTop: '2px' }} />
+                  <CheckCircle size={18} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
                   <span>Nurture open-source collaboration, competitive programming, and research through student interest groups.</span>
                 </li>
                 <li style={{ display: 'flex', gap: '0.6rem' }}>
-                  <CheckCircle size={18} style={{ color: 'var(--success)', flexShrink: 0, marginTop: '2px' }} />
+                  <CheckCircle size={18} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
                   <span>Maintain an enduring bridge between active undergraduates and accomplished alumni across global tech organizations.</span>
                 </li>
               </ul>
@@ -123,8 +122,8 @@ export default function About() {
               }
             ].map((item, idx) => (
               <div key={idx} className="card" style={{ padding: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>{item.title}</h3>
-                <p style={{ color: 'var(--muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>{item.desc}</p>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-text)', marginBottom: '0.5rem', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>{item.title}</h3>
+                <p style={{ color: 'var(--color-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -139,7 +138,7 @@ export default function About() {
             title="SAIT History & Milestones"
             subtitle="A clean timeline reflecting the journey of Information Technology at CUSAT."
           />
-          <div style={{ maxWidth: '840px', margin: '0 auto', borderLeft: '2px solid var(--border)', paddingLeft: '2rem', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          <div style={{ maxWidth: '840px', margin: '0 auto', borderLeft: '2px solid var(--color-border)', paddingLeft: '2rem', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
             {TIMELINE_EVENTS.map((item, idx) => (
               <div key={idx} style={{ position: 'relative' }}>
                 <div
@@ -150,18 +149,18 @@ export default function About() {
                     width: '18px',
                     height: '18px',
                     borderRadius: '50%',
-                    backgroundColor: 'var(--surface)',
-                    border: '3px solid var(--accent)'
+                    backgroundColor: 'var(--color-surface)',
+                    border: '3px solid var(--color-secondary)'
                   }}
                   aria-hidden="true"
                 />
-                <span style={{ fontSize: '0.8125rem', fontWeight: 700, color: 'var(--secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <span style={{ fontSize: '0.8125rem', fontWeight: 700, color: 'var(--color-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   {item.year}
                 </span>
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--primary-dark)', margin: '0.35rem 0 0.5rem' }}>
+                <h3 style={{ fontSize: '1.25rem', color: 'var(--color-text)', margin: '0.35rem 0 0.5rem', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>
                   {item.title}
                 </h3>
-                <p style={{ color: 'var(--muted)', fontSize: '0.925rem', lineHeight: '1.6', margin: 0 }}>
+                <p style={{ color: 'var(--color-muted)', fontSize: '0.925rem', lineHeight: '1.6', margin: 0 }}>
                   {item.desc}
                 </p>
               </div>
@@ -196,9 +195,9 @@ export default function About() {
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             <div className="card" style={{ padding: '1.75rem' }}>
-              <GraduationCap size={28} style={{ color: 'var(--primary)', marginBottom: '1rem' }} />
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--primary-dark)' }}>SOE IT Association</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '1.25rem' }}>
+              <GraduationCap size={28} style={{ color: 'var(--color-primary)', marginBottom: '1rem' }} />
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--color-text)', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>SOE IT Association</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', marginBottom: '1.25rem' }}>
                 The official departmental association listing hosted on the School of Engineering university portal.
               </p>
               <a
@@ -213,9 +212,9 @@ export default function About() {
             </div>
 
             <div className="card" style={{ padding: '1.75rem' }}>
-              <Layers size={28} style={{ color: 'var(--secondary)', marginBottom: '1rem' }} />
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--primary-dark)' }}>School of Engineering</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '1.25rem' }}>
+              <Layers size={28} style={{ color: 'var(--color-secondary)', marginBottom: '1rem' }} />
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--color-text)', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>School of Engineering</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', marginBottom: '1.25rem' }}>
                 Primary website of School of Engineering (SOE), CUSAT with department announcements and office contacts.
               </p>
               <a
@@ -230,9 +229,9 @@ export default function About() {
             </div>
 
             <div className="card" style={{ padding: '1.75rem' }}>
-              <BookOpen size={28} style={{ color: 'var(--accent)', marginBottom: '1rem' }} />
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--primary-dark)' }}>Academic Regulations & Syllabi</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '1.25rem' }}>
+              <BookOpen size={28} style={{ color: 'var(--color-primary)', marginBottom: '1rem' }} />
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--color-text)', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>Academic Regulations & Syllabi</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', marginBottom: '1.25rem' }}>
                 Official course curriculum, course outcomes, and academic calendars for B.Tech Information Technology.
               </p>
               <a
@@ -247,12 +246,12 @@ export default function About() {
             </div>
 
             <div className="card" style={{ padding: '1.75rem' }}>
-              <FileText size={28} style={{ color: 'var(--primary-dark)', marginBottom: '1rem' }} />
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--primary-dark)' }}>Department Magazine Archives</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '1.25rem' }}>
+              <FileText size={28} style={{ color: 'var(--color-secondary)', marginBottom: '1rem' }} />
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--color-text)', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>Department Magazine Archives</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', marginBottom: '1.25rem' }}>
                 Student technical articles, creative poetry, design highlights, and semester editorial collections.
               </p>
-              <span className="btn btn-outline btn-sm" style={{ cursor: 'default', color: 'var(--muted)' }}>
+              <span className="btn btn-outline btn-sm" style={{ cursor: 'default', color: 'var(--color-muted)' }}>
                 <span>Print Edition Circulated Annually</span>
               </span>
             </div>

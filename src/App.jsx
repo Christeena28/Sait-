@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import NoticeStrip from './components/NoticeStrip';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -28,6 +29,8 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  useScrollReveal();
+
   return (
     <>
       <a href="#main-content" className="skip-link">

@@ -14,12 +14,23 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   // Close mobile drawer on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
+
+  // Track scroll position for subtle shadow after 8px (200ms)
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 8);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -34,7 +45,7 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <header className="navbar" role="banner">
+    <header className={`navbar ${scrolled ? 'scrolled' : ''}`} role="banner">
       <div className="container navbar-container">
         {/* Brand Logo & Title */}
         <Link to="/" className="navbar-brand" aria-label="SAIT Home">
@@ -66,10 +77,10 @@ export default function Navbar() {
             </NavLink>
           ))}
           <div className="nav-cta" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Link to="/preview" className="btn btn-outline btn-sm" style={{ borderColor: 'var(--accent)', color: 'var(--primary-dark)', fontWeight: 600 }}>
+            <Link to="/preview" className="btn btn-outline btn-sm">
               <span>⚡ Full Site Preview</span>
             </Link>
-            <Link to="/activity-logger" className="btn btn-accent btn-sm">
+            <Link to="/activity-logger" className="btn btn-primary btn-sm">
               <PlusCircle size={16} aria-hidden="true" />
               <span>Log Activity</span>
             </Link>
@@ -87,6 +98,13 @@ export default function Navbar() {
           {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
+
+      {/* Mobile Drawer Overlay */}
+      <div
+        className={`mobile-drawer-overlay ${mobileOpen ? 'open' : ''}`}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden="true"
+      />
 
       {/* Mobile Drawer */}
       <div
@@ -117,17 +135,17 @@ export default function Navbar() {
               </NavLink>
             </li>
           ))}
-          <li style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <li style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(228, 220, 203, 0.15)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <Link
               to="/preview"
               className="btn btn-outline"
-              style={{ width: '100%', justifyContent: 'center', borderColor: 'var(--accent)', fontWeight: 600 }}
+              style={{ width: '100%', justifyContent: 'center' }}
             >
               <span>⚡ Full Site Preview</span>
             </Link>
             <Link
               to="/activity-logger"
-              className="btn btn-accent"
+              className="btn btn-primary"
               style={{ width: '100%', justifyContent: 'center' }}
             >
               <PlusCircle size={18} aria-hidden="true" />

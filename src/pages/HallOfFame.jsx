@@ -34,25 +34,25 @@ export default function HallOfFame() {
             <div
               className="card"
               style={{
-                borderLeft: '5px solid var(--accent)',
-                backgroundColor: '#FFFFFF',
+                borderLeft: '4px solid var(--color-secondary)',
+                backgroundColor: 'var(--color-surface)',
                 padding: '2.5rem',
-                boxShadow: '0 4px 12px rgba(18, 48, 90, 0.04)'
+                boxShadow: 'var(--shadow-sm)'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                 <span className="badge badge-accent">Featured Department Honor</span>
-                <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--secondary)' }}>
+                <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-secondary)' }}>
                   {featuredItem.year}
                 </span>
               </div>
-              <h2 style={{ fontSize: '1.85rem', color: 'var(--primary-dark)', marginBottom: '0.85rem' }}>
+              <h2 style={{ fontSize: '1.85rem', color: 'var(--color-primary-strong)', marginBottom: '0.85rem' }}>
                 {featuredItem.title}
               </h2>
-              <p style={{ color: 'var(--muted)', fontSize: '1.05rem', lineHeight: '1.6', maxWidth: '850px', marginBottom: '1.5rem' }}>
+              <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', lineHeight: '1.6', maxWidth: '850px', marginBottom: '1.5rem' }}>
                 {featuredItem.description}
               </p>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#E8EFF7', color: 'var(--primary)', padding: '0.4rem 0.85rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 600 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--color-surface-alt)', color: 'var(--color-primary)', padding: '0.4rem 0.85rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 600 }}>
                 <Trophy size={16} />
                 <span>Recognition: {featuredItem.badge}</span>
               </div>
@@ -98,13 +98,13 @@ export default function HallOfFame() {
           </div>
 
           {filteredAchievements.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+            <div key={`${selectedType}-${selectedYear}`} className="filter-cards-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
               {filteredAchievements.map((item) => (
                 <AchievementCard key={item.id} item={item} />
               ))}
             </div>
           ) : (
-            <div className="card" style={{ padding: '3rem', textAlign: 'center', color: 'var(--muted)' }}>
+            <div className="card" style={{ padding: '3rem', textAlign: 'center', color: 'var(--color-muted)' }}>
               <p>No achievements match the selected filters ({selectedType}, {selectedYear}).</p>
             </div>
           )}

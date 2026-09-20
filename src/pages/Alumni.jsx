@@ -65,11 +65,11 @@ export default function Alumni() {
           </div>
 
           {/* Connect CTA for Alumni */}
-          <div className="card" style={{ padding: '2.5rem', backgroundColor: '#FFFFFF', textAlign: 'center', borderTop: '4px solid var(--primary)' }}>
-            <h3 style={{ fontSize: '1.35rem', color: 'var(--primary-dark)', marginBottom: '0.65rem' }}>
+          <div className="card" style={{ padding: '2.5rem', backgroundColor: 'var(--color-surface)', textAlign: 'center', borderTop: '4px solid var(--color-primary)' }}>
+            <h3 style={{ fontSize: '1.35rem', color: 'var(--color-primary-strong)', marginBottom: '0.65rem' }}>
               Are You a Division of IT Alumnus?
             </h3>
-            <p style={{ color: 'var(--muted)', fontSize: '0.95rem', maxWidth: '620px', margin: '0 auto 1.5rem' }}>
+            <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem', maxWidth: '620px', margin: '0 auto 1.5rem' }}>
               We would love to reconnect! Join the annual "Footprints" alumni meet, conduct guest talks,
               or offer mentorship to aspiring IT students.
             </p>

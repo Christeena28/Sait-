@@ -13,11 +13,11 @@ export default function NotFound() {
       />
       <section className="section">
         <div className="container" style={{ textAlign: 'center', maxWidth: '600px' }}>
-          <div className="card" style={{ padding: '3rem 2rem', backgroundColor: '#FFFFFF' }}>
-            <h2 style={{ fontSize: '1.6rem', color: 'var(--primary-dark)', marginBottom: '1rem' }}>
+          <div className="card" style={{ padding: '3rem 2rem', backgroundColor: 'var(--color-surface)' }}>
+            <h2 style={{ fontSize: '1.6rem', color: 'var(--color-primary-strong)', marginBottom: '1rem' }}>
               Lost your way?
             </h2>
-            <p style={{ color: 'var(--muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
+            <p style={{ color: 'var(--color-muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
               Please check the navigation bar above or return to the SAIT homepage to explore events,
               placement records, and announcements.
             </p>

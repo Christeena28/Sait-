@@ -29,7 +29,7 @@ export default function Notices() {
           {/* Filter Bar */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Bell size={18} style={{ color: 'var(--secondary)' }} />
+              <Bell size={18} style={{ color: 'var(--color-secondary)' }} />
               <h2 className="section-title" style={{ fontSize: '1.4rem', margin: 0 }}>
                 Circulars ({filteredNotices.length})
               </h2>
@@ -52,8 +52,8 @@ export default function Notices() {
           {/* Pinned Notices */}
           {pinnedNotices.length > 0 && (
             <div style={{ marginBottom: '2.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--primary)', fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.85rem' }}>
-                <Pin size={14} style={{ color: 'var(--accent)' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-primary)', fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.85rem' }}>
+                <Pin size={14} style={{ color: 'var(--color-secondary)' }} />
                 <span>PINNED NOTICES</span>
               </div>
               {pinnedNotices.map((notice) => (
@@ -63,9 +63,9 @@ export default function Notices() {
           )}
 
           {/* Regular Notices */}
-          <div>
+          <div key={selectedFilter} className="filter-cards-fade">
             {pinnedNotices.length > 0 && otherNotices.length > 0 && (
-              <div style={{ color: 'var(--muted)', fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.85rem' }}>
+              <div style={{ color: 'var(--color-muted)', fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.85rem' }}>
                 RECENT UPDATES
               </div>
             )}
@@ -75,14 +75,14 @@ export default function Notices() {
                 <NoticeRow key={notice.id} notice={notice} />
               ))
             ) : pinnedNotices.length === 0 ? (
-              <div className="card" style={{ padding: '3rem', textAlign: 'center', color: 'var(--muted)' }}>
+              <div className="card" style={{ padding: '3rem', textAlign: 'center', color: 'var(--color-muted)' }}>
                 <p>No notices found under the "{selectedFilter}" category.</p>
               </div>
             ) : null}
           </div>
 
           {/* Notice Board Footnote */}
-          <div style={{ marginTop: '3.5rem', padding: '1.5rem', background: '#FFFFFF', border: '1px solid var(--border)', borderRadius: '6px', fontSize: '0.85rem', color: 'var(--muted)', display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+          <div style={{ marginTop: '3.5rem', padding: '1.5rem', background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '6px', fontSize: '0.85rem', color: 'var(--color-muted)', display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
             <span className="badge badge-secondary">Gateway Hub</span>
             <span>
               Physical notices and weekly tech updates are also published on the SAIT Information Board

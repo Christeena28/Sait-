@@ -8,7 +8,7 @@ export default function NoticeRow({ notice }) {
     switch (category) {
       case 'Announcement': return 'badge-primary';
       case 'Deadline': return 'badge-warning';
-      case 'Event': return 'badge-accent';
+      case 'Event': return 'badge-secondary';
       default: return 'badge-secondary';
     }
   };
@@ -18,7 +18,7 @@ export default function NoticeRow({ notice }) {
       className="card"
       style={{
         marginBottom: '1rem',
-        borderLeft: notice.pinned ? '4px solid var(--accent)' : '1px solid var(--border)',
+        borderLeft: notice.pinned ? '4px solid var(--color-secondary)' : '1px solid var(--color-border)',
         cursor: 'pointer'
       }}
       onClick={() => setExpanded(!expanded)}
@@ -46,19 +46,19 @@ export default function NoticeRow({ notice }) {
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--muted)', fontSize: '0.825rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-muted)', fontSize: '0.825rem' }}>
             <Calendar size={14} />
             <span>{notice.date}</span>
           </div>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-          <h3 style={{ fontSize: '1.15rem', color: 'var(--primary-dark)', margin: 0, fontWeight: 600 }}>
+          <h3 style={{ fontSize: '1.15rem', color: 'var(--color-text)', margin: 0, fontWeight: 600, fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>
             {notice.title}
           </h3>
           <button
             type="button"
-            style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', padding: '0.25rem' }}
+            style={{ background: 'none', border: 'none', color: 'var(--color-muted)', cursor: 'pointer', padding: '0.25rem' }}
             aria-label={expanded ? 'Collapse notice content' : 'Expand notice content'}
           >
             {expanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
@@ -66,8 +66,8 @@ export default function NoticeRow({ notice }) {
         </div>
 
         {expanded && (
-          <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-light)' }}>
-            <p style={{ color: 'var(--text)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+          <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--color-border)' }}>
+            <p style={{ color: 'var(--color-text)', fontSize: '0.95rem', lineHeight: '1.6' }}>
               {notice.content}
             </p>
           </div>
