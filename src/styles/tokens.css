@@ -1,32 +1,38 @@
 :root {
-  /* Slate palette (source colours) */
-  --slate-950: #06141B;
-  --slate-900: #11212D;
-  --slate-800: #253745;
-  --slate-600: #4A5C6A;
-  --slate-400: #9BA8AB;
+  /* SAIT metallic palette */
+  --slate-950: #080B0F;
+  --slate-900: #11161C;
+  --slate-800: #202A33;
+  --slate-600: #4B5965;
+  --slate-400: #9DA9B3;
 
-  /* Beige (replaces the old lightest colour) */
-  --beige-100: #F1ECE0;   /* cards, form fields, navbar-on-light elements */
-  --beige-300: #E4DCCB;   /* page background */
-  --beige-500: #D9D0BD;   /* alternating sections, table stripes */
-  --beige-700: #BDB3A0;   /* decorative borders */
+  --beige-100: #EEF2F4;
+  --beige-300: #080B0F;
+  --beige-500: #161D24;
+  --beige-700: #3A4650;
 
-  --color-bg: var(--beige-300);
-  --color-surface: var(--beige-100);
-  --color-surface-alt: var(--beige-500);
-  --color-border: var(--beige-700);
-  --color-input-border: #4A5C6A;     /* form controls need 3:1 against beige */
+  --color-bg: #080B0F;
+  --color-surface: rgba(255, 255, 255, 0.055);
+  --color-surface-alt: rgba(255, 255, 255, 0.035);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-input-border: #71808B;
 
-  --color-text: #06141B;
-  --color-muted: #3E505E;            /* darkened for contrast on beige */
-  --color-primary: #253745;
-  --color-primary-strong: #11212D;
-  --color-deep: #06141B;
-  --color-secondary: #4A5C6A;
+  --color-text: #F8F8F2;
+  --color-muted: rgba(248, 248, 242, 0.7);
+  --color-primary: #D8DDE0;
+  --color-primary-strong: #0C1012;
+  --color-deep: #080B0F;
+  --color-secondary: #AEB8BE;
 
-  --color-on-dark: #E4DCCB;          /* body text on dark sections (beige) */
-  --color-on-dark-muted: #9BA8AB;
+  --color-on-dark: #EEF2F4;
+  --color-on-dark-muted: rgba(248, 248, 242, 0.7);
+  --color-highlight: #FFFFFF;
+  --color-highlight-glow: transparent;
+
+  --glass-navigation: rgba(12, 16, 18, 0.5);
+  --glass-hover: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 
   /* Status (darkened slightly for beige backgrounds) */
   --color-success: #17683F;
@@ -34,10 +40,10 @@
   --color-danger: #B3261E;
   --color-error: var(--color-danger);
 
-  /* Subtle status badge tints on beige */
-  --color-success-bg: #E1EBE4;
-  --color-warning-bg: #EFE7D5;
-  --color-danger-bg: #EBDCDA;
+  /* Subtle status badge tints on the dark theme */
+  --color-success-bg: #0D2B24;
+  --color-warning-bg: #33250D;
+  --color-danger-bg: #351719;
   --color-error-bg: var(--color-danger-bg);
 
   /* Motion */
@@ -46,10 +52,10 @@
   --dur-base: 220ms;
   --dur-slow: 320ms;
 
-  /* Shadows (low opacity #06141B) */
-  --shadow-sm: 0 1px 3px rgba(6, 20, 27, 0.06), 0 1px 2px rgba(6, 20, 27, 0.04);
-  --shadow-md: 0 4px 12px rgba(6, 20, 27, 0.08);
-  --shadow-lg: 0 12px 32px rgba(6, 20, 27, 0.12);
+  /* Shadows for dark surfaces */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.14);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.24);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.32);
 
   /* Backward-compatible aliases mapping to the new token system */
   --primary: var(--color-primary);

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Calendar,
-  Clock,
   ArrowRight,
   BookOpen,
   Sparkles,
@@ -11,127 +10,63 @@ import {
   Briefcase,
   FileText,
   Activity,
-  Award,
-  ChevronRight,
   ShieldCheck
 } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 import EventCard from '../components/EventCard';
 import PersonCard from '../components/PersonCard';
 import CountUp from '../components/CountUp';
-import HeroCursorBackground from '../components/HeroCursorBackground';
+import HeroWaveBackground from '../components/HeroWaveBackground';
 import {
   STATS,
   FACULTY,
-  EVENTS,
-  NOTICES
+  EVENTS
 } from '../data/saitData';
 
 export default function Home() {
   const [activePortal, setActivePortal] = useState(0);
-  const nextEvent = EVENTS.find((e) => e.status === 'Upcoming') || EVENTS[0];
-  const latestNotice = NOTICES[0];
+  const [heroVerb, setHeroVerb] = useState('Build');
   const upcomingEvents = EVENTS.filter((e) => e.status === 'Upcoming').slice(0, 3);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+
+    const verbTimers = [
+      window.setTimeout(() => setHeroVerb('Create'), 3800),
+      window.setTimeout(() => setHeroVerb('Learn'), 5000),
+      window.setTimeout(() => setHeroVerb('Explore'), 6200),
+    ];
+
+    return () => verbTimers.forEach((timer) => window.clearTimeout(timer));
+  }, []);
 
   return (
     <div>
       {/* 1. HERO SECTION */}
-      <section className="section-hero" style={{ padding: '4.5rem 0 5rem' }}>
-        <HeroCursorBackground />
+      <section className="section-hero sait-hero">
+        <HeroWaveBackground />
         <div className="hero-dot-grid" aria-hidden="true" />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
-            
-            {/* Left Content */}
-            <div>
-              <div className="hero-stagger-1" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(228, 220, 203, 0.12)', padding: '0.35rem 0.85rem', borderRadius: '4px', marginBottom: '1.25rem' }}>
-                <ShieldCheck size={16} style={{ color: 'var(--color-on-dark)' }} />
-                <span style={{ fontSize: '0.8125rem', fontWeight: 600, letterSpacing: '0.06em', color: 'var(--color-on-dark)' }}>
-                  DIVISION OF INFORMATION TECHNOLOGY · SOE, CUSAT
-                </span>
-              </div>
-
-              <h1 className="hero-stagger-2" style={{ color: 'var(--color-surface)', fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', lineHeight: 1.18, marginBottom: '1.25rem', fontWeight: 700 }}>
-                SAIT: where CUSAT's IT students learn, build and lead.
-              </h1>
-
-              <p className="hero-stagger-3" style={{ color: 'var(--color-on-dark)', fontSize: '1.125rem', lineHeight: 1.65, marginBottom: '2rem', maxWidth: '580px' }}>
-                A student-run association fostering learning, projects, workshops, seminars,
-                collaboration and connections across the IT community.
-              </p>
-
-              <div className="hero-stagger-4" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link to="/events" className="btn btn-accent">
-                  <Calendar size={18} aria-hidden="true" />
-                  <span>View Events</span>
-                </Link>
-                <Link to="/activity-logger" className="btn btn-outline-white">
-                  <Activity size={18} aria-hidden="true" />
-                  <span>Log Activity</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Cards */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              
-              {/* SAIT Brand Badge */}
-              <div className="hero-stagger-5" style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(228, 220, 203, 0.08)', border: '1px solid rgba(228, 220, 203, 0.16)', padding: '1rem 1.25rem', borderRadius: '6px' }}>
-                <img
-                  src="/img/logo.png"
-                  alt="SAIT Logo"
-                  style={{ width: '48px', height: '48px', objectFit: 'contain' }}
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                />
-                <div>
-                  <h3 style={{ color: 'var(--color-surface)', fontSize: '1rem', margin: 0, fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>SAIT Association Portal</h3>
-                  <span style={{ color: 'var(--color-on-dark-muted)', fontSize: '0.8rem', fontWeight: 500 }}>
-                    Official Student Body · Est. Division of IT
-                  </span>
-                </div>
-              </div>
-
-              {/* Next Event Card */}
-              {nextEvent && (
-                <div className="hero-stagger-6" style={{ background: 'var(--color-surface)', borderRadius: '6px', padding: '1.25rem', border: '1px solid var(--color-border)', color: 'var(--color-text)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
-                    <span className="badge badge-primary">Next Event</span>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--color-muted)' }}>{nextEvent.date}</span>
-                  </div>
-                  <h4 style={{ fontSize: '1.05rem', color: 'var(--color-text)', marginBottom: '0.4rem', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>
-                    {nextEvent.title}
-                  </h4>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--color-muted)', marginBottom: '0.85rem' }}>
-                    {nextEvent.venue} · {nextEvent.time}
-                  </p>
-                  <Link to="/events" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <span>Event Details & RSVP</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              )}
-
-              {/* Latest Notice Card */}
-              {latestNotice && (
-                <div className="hero-stagger-6" style={{ background: 'rgba(228, 220, 203, 0.08)', borderRadius: '6px', padding: '1.25rem', border: '1px solid rgba(228, 220, 203, 0.16)', color: 'var(--color-on-dark)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                    <span style={{ background: 'rgba(228, 220, 203, 0.18)', color: 'var(--color-surface)', fontSize: '0.75rem', fontWeight: 700, padding: '0.2rem 0.5rem', borderRadius: '4px', textTransform: 'uppercase' }}>
-                      Latest Notice
+        <div className="container sait-hero-inner">
+          <div className="sait-hero-content">
+            <span className="sait-hero-eyebrow hero-stagger-1">Students Association of Information Technology</span>
+            <h1 className="sait-hero-title">
+              <span className="hero-title-line hero-title-line-verb hero-stagger-2">
+                <span>Where Students</span>
+                <span key={heroVerb} className="hero-title-verb hero-verb-enter" aria-label={heroVerb}>
+                  {heroVerb.split('').map((character, index) => (
+                    <span key={`${heroVerb}-${index}`} className="hero-verb-character" style={{ animationDelay: `${index * 70}ms` }} aria-hidden="true">
+                      {character}
                     </span>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--color-on-dark-muted)' }}>{latestNotice.date}</span>
-                  </div>
-                  <h4 style={{ fontSize: '0.975rem', color: 'var(--color-surface)', marginBottom: '0.4rem', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>
-                    {latestNotice.title}
-                  </h4>
-                  <Link to="/notices" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-on-dark)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', textDecoration: 'underline' }}>
-                    <span>Read Notice</span>
-                    <ChevronRight size={14} />
-                  </Link>
-                </div>
-              )}
-
+                  ))}
+                </span>
+              </span>
+              <span className="hero-title-line hero-stagger-3">What Comes Next.</span>
+            </h1>
+            <p className="sait-hero-subtitle hero-stagger-4">Connecting students, technology, opportunities and ideas at CUSAT.</p>
+            <div className="sait-hero-actions hero-stagger-5">
+              <Link to="/about" className="sait-hero-primary">Explore SAIT <ArrowRight size={17} aria-hidden="true" /></Link>
+              <Link to="/events" className="sait-hero-secondary">Explore Events</Link>
             </div>
-
           </div>
         </div>
       </section>
@@ -141,7 +76,7 @@ export default function Home() {
         <div className="container">
           <div className="stats-grid-mobile reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
             {STATS.map((stat, idx) => (
-              <div key={idx} style={{ padding: '1rem', textAlign: 'center', borderRight: idx !== STATS.length - 1 ? '1px solid rgba(228, 220, 203, 0.15)' : 'none' }}>
+              <div key={idx} style={{ padding: '1rem', textAlign: 'center', borderRight: idx !== STATS.length - 1 ? '1px solid rgba(148, 163, 184, 0.18)' : 'none' }}>
                 <div style={{ fontFamily: 'var(--heading)', fontSize: '2.4rem', fontWeight: 700, color: 'var(--color-surface)', lineHeight: 1.1, marginBottom: '0.4rem' }}>
                   <CountUp value={stat.value} />
                 </div>
@@ -149,7 +84,7 @@ export default function Home() {
                   {stat.label}
                 </div>
                 {stat.sample && (
-                  <span className="badge" style={{ fontSize: '0.7rem', background: 'rgba(228, 220, 203, 0.15)', color: 'var(--color-on-dark-muted)', border: '1px dashed rgba(228, 220, 203, 0.25)', textTransform: 'none' }}>
+                  <span className="badge" style={{ fontSize: '0.7rem', background: 'rgba(148, 163, 184, 0.15)', color: 'var(--color-on-dark-muted)', border: '1px dashed rgba(148, 163, 184, 0.28)', textTransform: 'none' }}>
                     Sample figure
                   </span>
                 )}
@@ -238,18 +173,18 @@ export default function Home() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'flex-start',
-                    background: isActive ? 'var(--color-deep)' : 'var(--color-surface)',
-                    color: isActive ? '#FFFFFF' : 'var(--color-text)',
-                    borderColor: isActive ? 'var(--color-deep)' : 'var(--color-border)',
+                    background: isActive ? 'var(--color-highlight)' : 'rgba(157, 169, 179, 0.14)',
+                    color: isActive ? 'var(--color-deep)' : 'var(--color-muted)',
+                    borderColor: isActive ? 'var(--color-highlight)' : 'rgba(157, 169, 179, 0.3)',
                   }}
                 >
                   <div
                     className="portal-icon-box"
                     style={{
-                      background: isActive ? 'rgba(255, 255, 255, 0.15)' : 'var(--color-surface-alt)',
+                      background: isActive ? 'rgba(8, 11, 15, 0.12)' : 'rgba(157, 169, 179, 0.12)',
                       padding: '0.65rem',
                       borderRadius: '6px',
-                      color: isActive ? '#FFFFFF' : 'var(--color-primary)',
+                      color: isActive ? 'var(--color-deep)' : 'var(--color-muted)',
                       marginBottom: '1rem',
                       transition: 'background-color var(--dur-base) var(--ease), color var(--dur-base) var(--ease)',
                     }}
@@ -259,7 +194,7 @@ export default function Home() {
                   <h3
                     style={{
                       fontSize: '1.15rem',
-                      color: isActive ? '#FFFFFF' : 'var(--color-text)',
+                      color: isActive ? 'var(--color-deep)' : 'var(--color-muted)',
                       marginBottom: '0.35rem',
                       fontFamily: 'var(--font-subheading)',
                       letterSpacing: '0.01em',
@@ -270,7 +205,7 @@ export default function Home() {
                   <p
                     style={{
                       fontSize: '0.85rem',
-                      color: isActive ? 'var(--color-on-dark)' : 'var(--color-muted)',
+                      color: isActive ? 'var(--color-deep)' : 'var(--color-muted)',
                       margin: 0,
                     }}
                   >

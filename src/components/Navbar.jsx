@@ -86,7 +86,7 @@ export default function Navbar() {
             </NavLink>
           ))}
           <div className="nav-cta" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Link to="/activity-logger" className="btn btn-primary btn-sm">
+            <Link to="/activity-logger" className="btn btn-primary btn-sm nav-activity-btn">
               <PlusCircle size={16} aria-hidden="true" />
               <span>Log Activity</span>
             </Link>
@@ -141,10 +141,10 @@ export default function Navbar() {
               </NavLink>
             </li>
           ))}
-          <li style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(228, 220, 203, 0.15)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <li style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(148, 163, 184, 0.18)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <Link
               to="/activity-logger"
-              className="btn btn-primary"
+              className="btn btn-primary nav-activity-btn"
               style={{ width: '100%', justifyContent: 'center' }}
             >
               <PlusCircle size={18} aria-hidden="true" />

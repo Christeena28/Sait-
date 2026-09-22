@@ -79,7 +79,7 @@ export default function FullPreview() {
             <span
               style={{
                 fontSize: '0.75rem',
-                backgroundColor: 'rgba(228, 220, 203, 0.15)',
+                backgroundColor: 'rgba(148, 163, 184, 0.15)',
                 padding: '0.15rem 0.5rem',
                 borderRadius: '4px',
                 color: 'var(--color-on-dark)',
@@ -107,7 +107,7 @@ export default function FullPreview() {
                 onClick={() => scrollToSection(sec.id)}
                 style={{
                   background: 'transparent',
-                  border: '1px solid rgba(228, 220, 203, 0.2)',
+                  border: '1px solid rgba(148, 163, 184, 0.2)',
                   color: 'var(--color-on-dark-muted)',
                   padding: '0.25rem 0.55rem',
                   fontSize: '0.75rem',
@@ -123,7 +123,7 @@ export default function FullPreview() {
                   e.currentTarget.style.color = 'var(--color-surface)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(228, 220, 203, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.2)';
                   e.currentTarget.style.color = 'var(--color-on-dark-muted)';
                 }}
               >
