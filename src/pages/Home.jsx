@@ -77,7 +77,7 @@ export default function Home() {
           <div className="stats-grid-mobile reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
             {STATS.map((stat, idx) => (
               <div key={idx} style={{ padding: '1rem', textAlign: 'center', borderRight: idx !== STATS.length - 1 ? '1px solid rgba(148, 163, 184, 0.18)' : 'none' }}>
-                <div style={{ fontFamily: 'var(--heading)', fontSize: '2.4rem', fontWeight: 700, color: 'var(--color-surface)', lineHeight: 1.1, marginBottom: '0.4rem' }}>
+                <div style={{ fontFamily: 'var(--heading)', fontSize: '2.4rem', fontWeight: 700, color: '#FFFFFF', textShadow: '0 0 8px rgba(255, 255, 255, 0.12)', lineHeight: 1.1, marginBottom: '0.4rem' }}>
                   <CountUp value={stat.value} />
                 </div>
                 <div style={{ fontSize: '0.9rem', color: 'var(--color-on-dark-muted)', fontWeight: 500, marginBottom: '0.25rem' }}>

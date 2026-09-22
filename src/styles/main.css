@@ -1323,10 +1323,18 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
 
 /* Page Header (Internal pages use --color-primary-strong band with beige text) */
 .page-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: var(--color-primary-strong);
   color: var(--color-on-dark);
   border-bottom: 1px solid rgba(148, 163, 184, 0.18);
   padding: 3.5rem 0 3rem;
+}
+
+.page-header-content {
+  position: relative;
+  z-index: 1;
 }
 
 .page-eyebrow {

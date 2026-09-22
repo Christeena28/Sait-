@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PageHeader from '../components/PageHeader';
+import HeroWaveBackground from '../components/HeroWaveBackground';
 import SectionHeader from '../components/SectionHeader';
 import PersonCard from '../components/PersonCard';
 import { FACULTY } from '../data/saitData';
@@ -46,6 +47,7 @@ export default function About() {
         eyebrow="Division of Information Technology · SOE CUSAT"
         title="About SAIT"
         description="Students Association of Information Technology is the driving force behind student innovation, co-curricular technical growth, and professional community at SOE CUSAT."
+        background={<HeroWaveBackground />}
       />
 
       {/* 1. VISION & MISSION */}
