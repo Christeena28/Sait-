@@ -739,10 +739,7 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
 }
 
 .hero-title-line-verb {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.24em;
+  text-align: center;
 }
 
 .hero-title-verb {
@@ -757,6 +754,7 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
   width: 7ch;
   white-space: nowrap;
   text-align: left;
+  vertical-align: baseline;
 }
 
 .hero-verb-character {
@@ -1519,14 +1517,6 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
   .sait-hero-title {
     font-size: clamp(2.75rem, 13vw, 4.25rem);
     line-height: 1.02;
-  }
-
-  .hero-title-line-verb {
-    gap: 0.18em;
-  }
-
-  .hero-verb-enter {
-    width: 6.5ch;
   }
 
   .sait-hero-eyebrow {
