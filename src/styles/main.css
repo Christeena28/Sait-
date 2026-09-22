@@ -630,11 +630,6 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
 }
 
 .hero-cursor-background {
-  --hero-cursor-x: 50%;
-  --hero-cursor-y: 50%;
-  --hero-glow-opacity: 0;
-  --hero-parallax-x: 0px;
-  --hero-parallax-y: 0px;
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -647,17 +642,7 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
   inset: -12px;
   width: calc(100% + 24px);
   height: calc(100% + 24px);
-  transform: translate3d(var(--hero-parallax-x), var(--hero-parallax-y), 0);
   opacity: 0.82;
-}
-
-.hero-cursor-glow {
-  position: absolute;
-  inset: -15%;
-  background: radial-gradient(circle 180px at var(--hero-cursor-x) var(--hero-cursor-y), rgba(137, 181, 221, 0.11), rgba(70, 111, 160, 0.035) 42%, transparent 72%);
-  opacity: var(--hero-glow-opacity);
-  transition: opacity 450ms var(--ease);
-  transform: translate3d(var(--hero-parallax-x), var(--hero-parallax-y), 0);
 }
 
 .dark-band {
