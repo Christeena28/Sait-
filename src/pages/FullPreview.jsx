@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Monitor,
-  Tablet,
-  Smartphone,
-  Maximize2,
   ExternalLink,
   ChevronRight,
   Layers,
@@ -42,8 +38,6 @@ const SECTIONS = [
 ];
 
 export default function FullPreview() {
-  const [viewportWidth, setViewportWidth] = useState('100%'); // '100%', '1200px', '768px', '375px'
-
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -138,114 +132,10 @@ export default function FullPreview() {
             ))}
           </div>
 
-          {/* Device Width Simulator */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <span style={{ fontSize: '0.75rem', color: 'var(--color-on-dark-muted)' }}>Viewport:</span>
-            <button
-              type="button"
-              onClick={() => setViewportWidth('100%')}
-              style={{
-                background: viewportWidth === '100%' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
-                color: viewportWidth === '100%' ? 'var(--color-deep)' : 'var(--color-on-dark)',
-                border: 'none',
-                padding: '0.3rem 0.55rem',
-                borderRadius: '3px',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.25rem',
-              }}
-              title="Full Width Responsive"
-            >
-              <Maximize2 size={13} />
-              <span>Full</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setViewportWidth('1200px')}
-              style={{
-                background: viewportWidth === '1200px' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
-                color: viewportWidth === '1200px' ? 'var(--color-deep)' : 'var(--color-on-dark)',
-                border: 'none',
-                padding: '0.3rem 0.55rem',
-                borderRadius: '3px',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.25rem',
-              }}
-              title="Desktop (1200px)"
-            >
-              <Monitor size={13} />
-              <span>Desktop</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setViewportWidth('768px')}
-              style={{
-                background: viewportWidth === '768px' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
-                color: viewportWidth === '768px' ? 'var(--color-deep)' : 'var(--color-on-dark)',
-                border: 'none',
-                padding: '0.3rem 0.55rem',
-                borderRadius: '3px',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.25rem',
-              }}
-              title="Tablet (768px)"
-            >
-              <Tablet size={13} />
-              <span>768px</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setViewportWidth('375px')}
-              style={{
-                background: viewportWidth === '375px' ? 'var(--color-surface)' : 'rgba(228, 220, 203, 0.12)',
-                color: viewportWidth === '375px' ? 'var(--color-deep)' : 'var(--color-on-dark)',
-                border: 'none',
-                padding: '0.3rem 0.55rem',
-                borderRadius: '3px',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.25rem',
-              }}
-              title="Mobile (375px)"
-            >
-              <Smartphone size={13} />
-              <span>375px</span>
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* Container Wrapper for Device Simulation */}
-      <div
-        style={{
-          width: viewportWidth,
-          maxWidth: '100%',
-          margin: '2rem auto',
-          backgroundColor: 'var(--color-surface)',
-          borderRadius: viewportWidth !== '100%' ? '12px' : '0',
-          boxShadow: viewportWidth !== '100%' ? '0 12px 36px rgba(6, 20, 27, 0.16)' : 'none',
-          overflow: 'hidden',
-          border: viewportWidth !== '100%' ? '1px solid var(--color-border)' : 'none',
-          transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        }}
-      >
+      <div className="full-preview-content">
         {/* Sequence of All Pages with Clear Section Banners */}
         {SECTIONS.map((sec, idx) => {
           const ComponentToRender = sec.component;

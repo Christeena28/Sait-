@@ -46,43 +46,127 @@ body {
   overflow: hidden;
   background: var(--color-deep);
   color: var(--color-on-dark);
-  animation: introFadeIn 500ms var(--ease) both;
-  transition: opacity 500ms var(--ease), visibility 500ms var(--ease);
+  transition: none;
 }
 
 .intro-animation.is-exiting {
-  opacity: 0;
   visibility: hidden;
 }
 
 .intro-animation-content {
   position: relative;
   z-index: 1;
+  width: min(88vw, 34rem);
+  min-height: 13rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: introContentRise 900ms var(--ease) both;
 }
 
 .intro-animation-logo {
-  width: clamp(8.5rem, 25vw, 13rem);
+  position: relative;
+  width: clamp(5.5rem, 15vw, 8rem);
   height: auto;
   object-fit: contain;
-  opacity: 0;
-  animation: introLogoReveal 1100ms 150ms var(--ease) forwards;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 1.5rem rgba(228, 220, 203, 0.08));
+  animation: introLogoReveal 800ms 300ms var(--ease) both;
 }
 
-.intro-animation-glow {
+.intro-animation-wordmark {
+  position: relative;
+  z-index: 2;
+  display: block;
+  color: rgba(228, 220, 203, 0.68);
+  font-family: var(--font-subheading);
+  font-size: clamp(2.35rem, 6.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  padding-left: 0.14em;
+  margin-top: 1rem;
+  text-shadow: 0 0 1rem rgba(228, 220, 203, 0.04);
+}
+
+.intro-animation-subtitle {
+  margin-top: 0.65rem;
+  color: rgba(228, 220, 203, 0.48);
+  font-family: var(--font-subheading);
+  font-size: clamp(0.58rem, 1.6vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.intro-animation-wordmark > span {
+  display: inline-block;
+  color: inherit;
+  text-shadow: inherit;
+  animation: introLetterHighlight 1.6s var(--ease) 1 forwards;
+}
+
+.intro-animation-wordmark > span:nth-child(2) { animation-delay: 350ms; }
+.intro-animation-wordmark > span:nth-child(3) { animation-delay: 700ms; }
+.intro-animation-wordmark > span:nth-child(4) { animation-delay: 1050ms; }
+
+@keyframes introLetterHighlight {
+  0%, 100% {
+    color: inherit;
+    text-shadow: inherit;
+    transform: translateY(0);
+  }
+  18% {
+    color: var(--color-on-dark);
+    text-shadow: 0 0 0.8rem rgba(228, 220, 203, 0.24);
+    transform: translateY(-2px);
+  }
+  40% {
+    color: inherit;
+    text-shadow: inherit;
+    transform: translateY(0);
+  }
+}
+
+.intro-animation-ambient {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(70vw, 34rem);
-  aspect-ratio: 1;
-  border: 1px solid rgba(241, 236, 224, 0.12);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4rem rgba(241, 236, 224, 0.025), 0 0 0 8rem rgba(241, 236, 224, 0.018);
-  animation: introGlowPulse 2.4s ease-in-out infinite;
+  width: min(26rem, 68vw);
+  height: min(12rem, 30vw);
+  background: radial-gradient(ellipse, rgba(228, 220, 203, 0.06), transparent 68%);
+  transform: translate(-50%, -50%);
 }
+
+.intro-animation-loader {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+}
+
+.intro-animation-loader span {
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: var(--color-on-dark);
+  opacity: 0.35;
+  animation: introLoaderPulse 900ms ease-in-out infinite;
+}
+
+@keyframes introLogoReveal {
+  from { transform: scale(0.85); }
+  to { transform: scale(1); }
+}
+
+@keyframes introLoaderPulse {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50% { opacity: 0.9; transform: scale(1); }
+}
+
+.intro-animation-loader span:nth-child(2) { animation-delay: 150ms; }
+.intro-animation-loader span:nth-child(3) { animation-delay: 300ms; }
 
 @keyframes introFadeIn {
   from { opacity: 0; }
@@ -94,14 +178,24 @@ body {
   to { transform: translateY(0); }
 }
 
-@keyframes introLogoReveal {
-  from { opacity: 0; transform: scale(0.82) rotate(-5deg); }
-  to { opacity: 1; transform: scale(1) rotate(0); }
-}
+@media (prefers-reduced-motion: reduce) {
+  .intro-animation,
+  .intro-animation-content,
+  .intro-animation-logo,
+  .intro-animation-loader span,
+  .intro-animation-wordmark > span {
+    animation: none;
+  }
 
-@keyframes introGlowPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.7; }
-  50% { transform: translate(-50%, -50%) scale(1.04); opacity: 1; }
+  .intro-animation-logo {
+    opacity: 0.35;
+    transform: none;
+  }
+
+  .intro-animation-loader span {
+    opacity: 0.5;
+    transform: none;
+  }
 }
 
 main {
@@ -213,6 +307,71 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.about-activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.about-activity-card {
+  padding: 1.5rem;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  transition: background-color var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease),
+              color var(--dur-base) var(--ease),
+              transform var(--dur-base) var(--ease);
+}
+
+.about-activity-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-subheading);
+  letter-spacing: 0.01em;
+}
+
+.about-activity-card p {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.about-activity-card:hover,
+.about-activity-card:focus-visible {
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.about-activity-card.is-selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-dark);
+}
+
+.about-activity-card.is-selected p {
+  color: var(--color-on-dark-muted);
+}
+
+.full-preview-content {
+  width: 100%;
+  margin: 2rem auto;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .full-preview-content {
+    margin-top: 1rem;
+  }
+
+  .full-preview-content .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 /* Buttons */

@@ -86,9 +86,6 @@ export default function Navbar() {
             </NavLink>
           ))}
           <div className="nav-cta" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Link to="/preview" className="btn btn-outline btn-sm">
-              <span>⚡ Full Site Preview</span>
-            </Link>
             <Link to="/activity-logger" className="btn btn-primary btn-sm">
               <PlusCircle size={16} aria-hidden="true" />
               <span>Log Activity</span>
@@ -145,13 +142,6 @@ export default function Navbar() {
             </li>
           ))}
           <li style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(228, 220, 203, 0.15)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Link
-              to="/preview"
-              className="btn btn-outline"
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              <span>⚡ Full Site Preview</span>
-            </Link>
             <Link
               to="/activity-logger"
               className="btn btn-primary"

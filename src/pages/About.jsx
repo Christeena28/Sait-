@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeader from '../components/PageHeader';
 import SectionHeader from '../components/SectionHeader';
 import PersonCard from '../components/PersonCard';
@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 
 export default function About() {
+  const [selectedActivity, setSelectedActivity] = useState(null);
+
   const TIMELINE_EVENTS = [
     {
       year: 'Foundational Years',
@@ -94,7 +96,7 @@ export default function About() {
             title="What SAIT Does"
             subtitle="Genuine academic and student-driven activities organized each academic year."
           />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+          <div className="about-activities-list">
             {[
               {
                 title: 'Workshops & Bootcamps',
@@ -121,9 +123,21 @@ export default function About() {
                 desc: 'An active notice and information hub positioned at the department gateway, highlighting ongoing opportunities and technical briefings.'
               }
             ].map((item, idx) => (
-              <div key={idx} className="card" style={{ padding: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-text)', marginBottom: '0.5rem', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>{item.title}</h3>
-                <p style={{ color: 'var(--color-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>{item.desc}</p>
+              <div
+                key={idx}
+                className={`card about-activity-card ${selectedActivity === idx ? 'is-selected' : ''}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedActivity(idx)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedActivity(idx);
+                  }
+                }}
+              >
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
               </div>
             ))}
           </div>

@@ -14,7 +14,6 @@ import Alumni from './pages/Alumni';
 import HallOfFame from './pages/HallOfFame';
 import ActivityLogger from './pages/ActivityLogger';
 import Notices from './pages/Notices';
-import FullPreview from './pages/FullPreview';
 import NotFound from './pages/NotFound';
 
 // Scroll to top helper on route change
@@ -50,7 +49,6 @@ export default function App() {
           <Route path="/hall-of-fame" element={<HallOfFame />} />
           <Route path="/activity-logger" element={<ActivityLogger />} />
           <Route path="/notices" element={<Notices />} />
-          <Route path="/preview" element={<FullPreview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
