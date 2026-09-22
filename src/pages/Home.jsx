@@ -19,6 +19,7 @@ import SectionHeader from '../components/SectionHeader';
 import EventCard from '../components/EventCard';
 import PersonCard from '../components/PersonCard';
 import CountUp from '../components/CountUp';
+import HeroCursorBackground from '../components/HeroCursorBackground';
 import {
   STATS,
   FACULTY,
@@ -36,6 +37,7 @@ export default function Home() {
     <div>
       {/* 1. HERO SECTION */}
       <section className="section-hero" style={{ padding: '4.5rem 0 5rem' }}>
+        <HeroCursorBackground />
         <div className="hero-dot-grid" aria-hidden="true" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>

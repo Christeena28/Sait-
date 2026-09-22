@@ -470,6 +470,37 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
   overflow: hidden;
 }
 
+.hero-cursor-background {
+  --hero-cursor-x: 50%;
+  --hero-cursor-y: 50%;
+  --hero-glow-opacity: 0;
+  --hero-parallax-x: 0px;
+  --hero-parallax-y: 0px;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-cursor-background canvas {
+  position: absolute;
+  inset: -12px;
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
+  transform: translate3d(var(--hero-parallax-x), var(--hero-parallax-y), 0);
+  opacity: 0.82;
+}
+
+.hero-cursor-glow {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(circle 180px at var(--hero-cursor-x) var(--hero-cursor-y), rgba(137, 181, 221, 0.11), rgba(70, 111, 160, 0.035) 42%, transparent 72%);
+  opacity: var(--hero-glow-opacity);
+  transition: opacity 450ms var(--ease);
+  transform: translate3d(var(--hero-parallax-x), var(--hero-parallax-y), 0);
+}
+
 .dark-band {
   border-top: 1px solid rgba(228, 220, 203, 0.12);
   border-bottom: 1px solid rgba(228, 220, 203, 0.12);
@@ -751,7 +782,7 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(rgba(228, 220, 203, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(228, 220, 203, 0.035) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
 }
