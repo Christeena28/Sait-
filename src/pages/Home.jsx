@@ -13,22 +13,16 @@ import {
   Activity,
   Award,
   ChevronRight,
-  ShieldCheck,
-  CheckCircle2
+  ShieldCheck
 } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 import EventCard from '../components/EventCard';
 import PersonCard from '../components/PersonCard';
-import AchievementCard from '../components/AchievementCard';
-import AlumniCard from '../components/AlumniCard';
 import CountUp from '../components/CountUp';
 import {
   STATS,
   FACULTY,
   EVENTS,
-  HALL_OF_FAME,
-  ALUMNI_SPOTLIGHT,
-  PLACEMENT_STATS,
   NOTICES
 } from '../data/saitData';
 
@@ -37,7 +31,6 @@ export default function Home() {
   const nextEvent = EVENTS.find((e) => e.status === 'Upcoming') || EVENTS[0];
   const latestNotice = NOTICES[0];
   const upcomingEvents = EVENTS.filter((e) => e.status === 'Upcoming').slice(0, 3);
-  const homeAchievements = HALL_OF_FAME.slice(0, 3);
 
   return (
     <div>
@@ -330,191 +323,6 @@ export default function Home() {
             {FACULTY.map((person, idx) => (
               <PersonCard key={idx} person={person} isFaculty={true} />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. PLACEMENTS PREVIEW (Dark Band) */}
-      <section className="dark-band section" style={{ backgroundColor: 'var(--color-primary-strong)', color: 'var(--color-on-dark)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
-            <div className="reveal">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <span className="section-eyebrow" style={{ color: 'var(--color-on-dark-muted)' }}>Career Outcomes</span>
-                <span className="badge badge-sample" style={{ background: 'rgba(228, 220, 203, 0.15)', color: 'var(--color-on-dark-muted)', borderColor: 'rgba(228, 220, 203, 0.25)' }}>Sample Data</span>
-              </div>
-              <h2 className="section-title" style={{ color: 'var(--color-surface)' }}>Industry Placements & Recruiting</h2>
-              <p style={{ color: 'var(--color-on-dark)', marginBottom: '1.75rem' }}>
-                Information Technology graduates from SOE CUSAT consistently secure high-impact roles
-                across global product organizations, consulting giants, and innovative technical startups.
-              </p>
-
-              {/* 3 Stats (Cards stay beige --color-surface) */}
-              <div className="reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.75rem' }}>
-                {PLACEMENT_STATS.stats.slice(0, 3).map((st, i) => (
-                  <div key={i} className="card" style={{ padding: '1rem', textAlign: 'center', backgroundColor: 'var(--color-surface)' }}>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-primary)', fontFamily: 'var(--heading)' }}>
-                      <CountUp value={st.value} />
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginTop: '0.2rem' }}>
-                      {st.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Recruiter Chips */}
-              <div style={{ marginBottom: '1.75rem' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-surface)', marginBottom: '0.65rem' }}>
-                  Prominent Campus Recruiters:
-                </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  {PLACEMENT_STATS.topRecruiters.slice(0, 8).map((rec, i) => (
-                    <span key={i} style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', padding: '0.25rem 0.65rem', borderRadius: '4px', fontSize: '0.825rem', color: 'var(--color-text)', fontWeight: 500 }}>
-                      {rec}
-                    </span>
-                  ))}
-                  <span style={{ padding: '0.25rem 0.65rem', fontSize: '0.825rem', color: 'var(--color-on-dark-muted)', fontWeight: 500 }}>
-                    + many more
-                  </span>
-                </div>
-              </div>
-
-              <Link to="/placements" className="btn btn-primary">
-                <span>View Full Placement Report</span>
-                <ArrowRight size={15} />
-              </Link>
-            </div>
-
-            {/* Recruiter & Career Highlight Box (stays beige --color-surface) */}
-            <div className="card reveal" style={{ padding: '2rem', backgroundColor: 'var(--color-surface)' }}>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--color-text)', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>
-                Dedicated Career Support
-              </h3>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', padding: 0 }}>
-                <li style={{ display: 'flex', gap: '0.75rem' }}>
-                  <CheckCircle2 size={20} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <strong style={{ fontSize: '0.95rem', color: 'var(--color-text)' }}>Peer-Driven DSA & Mock Rounds:</strong>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-muted)', margin: 0 }}>Weekly coding practice and technical mock interview sessions hosted by placed seniors.</p>
-                  </div>
-                </li>
-                <li style={{ display: 'flex', gap: '0.75rem' }}>
-                  <CheckCircle2 size={20} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <strong style={{ fontSize: '0.95rem', color: 'var(--color-text)' }}>Central Placement Coordination:</strong>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-muted)', margin: 0 }}>Direct integration with the Central Placement Office (CPO) of CUSAT.</p>
-                  </div>
-                </li>
-                <li style={{ display: 'flex', gap: '0.75rem' }}>
-                  <CheckCircle2 size={20} style={{ color: 'var(--color-success)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <strong style={{ fontSize: '0.95rem', color: 'var(--color-text)' }}>Alumni Referral Networks:</strong>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-muted)', margin: 0 }}>Exclusive referral opportunities and mentorship from IT alumni at top tech firms.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. HALL OF FAME (3 Cards) */}
-      <section className="section-alt section">
-        <div className="container">
-          <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-            <div>
-              <span className="section-eyebrow">Excellence & Accreditations</span>
-              <h2 className="section-title">Department Hall of Fame</h2>
-              <p className="section-subtitle">Key institutional milestones, competitive achievements, and international recognitions.</p>
-            </div>
-            <Link to="/hall-of-fame" className="btn btn-outline btn-sm">
-              <span>View All Milestones</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-
-          <div className="reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-            {homeAchievements.map((item) => (
-              <AchievementCard key={item.id} item={item} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. ACTIVITY LOGGER INTRODUCTION + LEADERBOARD (Dark Band) */}
-      <section className="dark-band section" style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-on-dark)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
-            <div className="reveal">
-              <span className="section-eyebrow" style={{ color: 'var(--color-on-dark-muted)' }}>Student Recognition Program</span>
-              <h2 className="section-title" style={{ color: 'var(--color-surface)' }}>SAIT Activity Logger</h2>
-              <p style={{ color: 'var(--color-on-dark)', marginBottom: '1.25rem' }}>
-                Keep track of your technical workshops, project builds, hackathon participations,
-                and volunteering efforts in one centralized department portal.
-              </p>
-              <p style={{ color: 'var(--color-on-dark)', marginBottom: '1.75rem', fontSize: '0.95rem' }}>
-                Submit proof of participation, gain verified activity credits, and build your
-                verifiable student portfolio for department awards and placement recommendations.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link to="/activity-logger" className="btn btn-primary">
-                  <Activity size={16} />
-                  <span>Open Activity Logger</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Mini Leaderboard Preview (stays beige --color-surface) */}
-            <div className="card reveal" style={{ padding: '1.5rem', backgroundColor: 'var(--color-surface)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Trophy size={18} style={{ color: 'var(--color-primary)' }} />
-                  <h3 style={{ fontSize: '1.1rem', margin: 0, color: 'var(--color-text)', fontFamily: 'var(--font-subheading)', letterSpacing: '0.01em' }}>Activity Leaderboard</h3>
-                </div>
-                <span className="badge badge-sample">Demo Ranks</span>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {[
-                  { rank: 1, name: 'Advaith Pradosh', points: '420 pts', year: '3rd Year IT' },
-                  { rank: 2, name: 'Abhinav O', points: '390 pts', year: '3rd Year IT' },
-                  { rank: 3, name: 'Sreelakshmi K', points: '350 pts', year: '4th Year IT' },
-                  { rank: 4, name: 'Akash M P', points: '310 pts', year: '2nd Year IT' },
-                  { rank: 5, name: 'Trisha Gautham', points: '290 pts', year: '3rd Year IT' },
-                ].map((row) => (
-                  <div key={row.rank} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.5rem 0.75rem', borderRadius: '4px', background: row.rank === 1 ? 'var(--color-surface-alt)' : 'var(--color-bg)', border: row.rank === 1 ? '1px solid var(--color-border)' : '1px solid transparent' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <span style={{ fontWeight: 700, color: row.rank === 1 ? 'var(--color-primary)' : 'var(--color-muted)', width: '18px', textAlign: 'center' }}>
-                        #{row.rank}
-                      </span>
-                      <div>
-                        <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-text)' }}>{row.name}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>{row.year}</div>
-                      </div>
-                    </div>
-                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)' }}>
-                      {row.points}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 10. ALUMNI SPOTLIGHT */}
-      <section className="section-alt section">
-        <div className="container reveal">
-          <SectionHeader
-            eyebrow="Alumni Spotlight"
-            title="Voices from Our Graduate Community"
-            subtitle="Honoring leaders who started their journey at the Division of IT, CUSAT."
-            centered
-          />
-          <div style={{ maxWidth: '780px', margin: '0 auto' }}>
-            <AlumniCard alumni={ALUMNI_SPOTLIGHT} />
           </div>
         </div>
       </section>

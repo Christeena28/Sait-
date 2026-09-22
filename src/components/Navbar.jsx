@@ -65,6 +65,15 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="navbar-nav" aria-label="Main Navigation">
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              isActive ? 'nav-link active' : 'nav-link'
+            }
+          >
+            Home
+          </NavLink>
           {NAV_LINKS.map((item) => (
             <NavLink
               key={item.path}
