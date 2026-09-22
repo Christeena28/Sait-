@@ -17,6 +17,7 @@ import EventCard from '../components/EventCard';
 import PersonCard from '../components/PersonCard';
 import CountUp from '../components/CountUp';
 import HeroWaveBackground from '../components/HeroWaveBackground';
+import GranularGridBackground from '../components/GranularGridBackground';
 import {
   STATS,
   FACULTY,
@@ -44,6 +45,7 @@ export default function Home() {
     <div>
       {/* 1. HERO SECTION */}
       <section className="section-hero sait-hero">
+        <GranularGridBackground />
         <HeroWaveBackground />
         <div className="hero-dot-grid" aria-hidden="true" />
         <div className="container sait-hero-inner">
