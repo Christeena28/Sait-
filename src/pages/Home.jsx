@@ -50,8 +50,8 @@ export default function Home() {
           <div className="sait-hero-content">
             <span className="sait-hero-eyebrow hero-stagger-1">Students Association of Information Technology</span>
             <h1 className="sait-hero-title">
-              <span className="hero-title-line hero-stagger-2">Where Students</span>
-              <span className="hero-title-line hero-title-line-verb hero-stagger-3">
+              <span className="hero-title-line hero-title-line-verb hero-stagger-2">
+                <span>Where Students </span>
                 <span key={heroVerb} className="hero-title-verb hero-verb-enter" aria-label={heroVerb}>
                   {heroVerb.split('').map((character, index) => (
                     <span key={`${heroVerb}-${index}`} className="hero-verb-character" style={{ animationDelay: `${index * 70}ms` }} aria-hidden="true">
@@ -59,8 +59,8 @@ export default function Home() {
                     </span>
                   ))}
                 </span>
-                <span>What Comes Next.</span>
               </span>
+              <span className="hero-title-line hero-stagger-3">What Comes Next.</span>
             </h1>
             <p className="sait-hero-subtitle hero-stagger-4">Connecting students, technology, opportunities and ideas at CUSAT.</p>
             <div className="sait-hero-actions hero-stagger-5">

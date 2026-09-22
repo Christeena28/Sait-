@@ -740,6 +740,7 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
 
 .hero-title-line-verb {
   text-align: center;
+  white-space: nowrap;
 }
 
 .hero-title-verb {
@@ -751,6 +752,7 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
 
 .hero-verb-enter {
   display: inline-block;
+  position: relative;
   width: 7ch;
   white-space: nowrap;
   text-align: left;
@@ -1517,6 +1519,10 @@ a:hover > svg, .btn:hover > svg, .card:hover svg.arrow-icon, .link-arrow:hover s
   .sait-hero-title {
     font-size: clamp(2.75rem, 13vw, 4.25rem);
     line-height: 1.02;
+  }
+
+  .hero-title-line-verb {
+    white-space: normal;
   }
 
   .sait-hero-eyebrow {
