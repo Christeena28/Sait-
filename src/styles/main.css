@@ -32,6 +32,73 @@ body {
   overflow-x: hidden;
 }
 
+.intro-animation {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--color-deep);
+  color: var(--color-on-dark);
+  animation: introFadeIn 500ms var(--ease) both;
+  transition: opacity 500ms var(--ease), visibility 500ms var(--ease);
+}
+
+.intro-animation.is-exiting {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro-animation-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: introContentRise 900ms var(--ease) both;
+}
+
+.intro-animation-logo {
+  width: clamp(8.5rem, 25vw, 13rem);
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  animation: introLogoReveal 1100ms 150ms var(--ease) forwards;
+}
+
+.intro-animation-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(70vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(241, 236, 224, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4rem rgba(241, 236, 224, 0.025), 0 0 0 8rem rgba(241, 236, 224, 0.018);
+  animation: introGlowPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes introFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes introContentRise {
+  from { transform: translateY(18px); }
+  to { transform: translateY(0); }
+}
+
+@keyframes introLogoReveal {
+  from { opacity: 0; transform: scale(0.82) rotate(-5deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes introGlowPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.04); opacity: 1; }
+}
+
 main {
   flex: 1;
   outline: none;

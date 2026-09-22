@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import NoticeStrip from './components/NoticeStrip';
+import IntroAnimation from './components/IntroAnimation';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 import Home from './pages/Home';
@@ -33,10 +33,10 @@ export default function App() {
 
   return (
     <>
+      <IntroAnimation />
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <NoticeStrip />
       <Navbar />
       <ScrollToTop />
       <main id="main-content" tabIndex={-1}>
